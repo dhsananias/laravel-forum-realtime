@@ -52,11 +52,41 @@
         "produces" : [ "application/json" ],
         "responses" : {
           "200" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/definitions/Pedidos"
-              }
+            "description" : "Lista de Pedidos",
+            "schema" : {
+              "$ref" : "#/definitions/Pedidos"
             }
+          }
+        }
+      }
+    },
+    "/pedidos/{id_pedido}" : {
+      "get" : {
+        "tags" : [ "Pedidos" ],
+        "summary" : "Procura o pedido pelo id",
+        "description" : "Retorna apenas um pedido",
+        "operationId" : "getPetById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id_pedido",
+          "in" : "path",
+          "description" : "Id do Pedido que deseja retornar",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Pedido retornado com sucesso",
+            "schema" : {
+              "$ref" : "#/definitions/Pedidos"
+            }
+          },
+          "400" : {
+            "description" : "Você forneceu um id inválido"
+          },
+          "404" : {
+            "description" : "Pedido não encontrado"
           }
         }
       }
