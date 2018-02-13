@@ -51,8 +51,12 @@
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "responses" : {
-          "405" : {
-            "description" : "Dados Inválidos"
+          "200" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/definitions/Pedidos"
+              }
+            }
           }
         }
       }
